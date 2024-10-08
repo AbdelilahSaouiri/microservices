@@ -1,10 +1,13 @@
 package net.ensah.customerservice;
 
-import net.ensah.customerservice.controller.CustomerController;
 import net.ensah.customerservice.entity.Customer;
+import net.ensah.customerservice.repository.CustomerRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import java.util.UUID;
 
 @SpringBootApplication
 public class CustomerServiceApplication {
@@ -13,4 +16,30 @@ public class CustomerServiceApplication {
         SpringApplication.run(CustomerServiceApplication.class, args);
     }
 
+    @Bean
+    CommandLineRunner commandLineRunner(CustomerRepository customerRepository) {
+        return args -> {
+            Customer customer1= Customer.builder()
+                    .customerId(UUID.randomUUID().toString())
+                    .firstName("abdelilah")
+                    .lastName("saouiri")
+                    .email("abdelilah@gmail.com")
+                    .build();
+            Customer customer2= Customer.builder()
+                    .customerId(UUID.randomUUID().toString())
+                    .firstName("said")
+                    .lastName("wahbi")
+                    .email("said@gmail.com")
+                    .build();
+            Customer customer3= Customer.builder()
+                    .customerId(UUID.randomUUID().toString())
+                    .firstName("fes")
+                    .lastName("halima")
+                    .email("halima@gmail.com")
+                    .build();
+            customerRepository.save(customer1);
+            customerRepository.save(customer2);
+            customerRepository.save(customer3);
+        };
+    }
 }

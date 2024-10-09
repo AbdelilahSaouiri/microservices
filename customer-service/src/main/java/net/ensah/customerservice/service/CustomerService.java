@@ -53,6 +53,7 @@ public class CustomerService {
     public CustomerResponseDto findCustomerbyCustomerId(String customerId) {
         Customer byCustomerId = customerRepository.findByCustomerId(customerId);
        return CustomerResponseDto.builder()
+               .customerId(byCustomerId.getCustomerId())
                 .firstname(byCustomerId.getFirstName())
                 .lastName(byCustomerId.getLastName())
                 .email(byCustomerId.getEmail())

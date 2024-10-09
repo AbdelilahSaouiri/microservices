@@ -3,6 +3,8 @@ package net.ensah.accountservice.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import net.ensah.accountservice.Enum.AccountType;
+import net.ensah.accountservice.model.Customer;
+
 import java.time.LocalDate;
 
 @Entity
@@ -16,6 +18,8 @@ public class BankAccount {
     private String currency;
     @Enumerated(EnumType.STRING)
     private AccountType accountType;
+    @Transient
+    private Customer customer;
     private String cutsomerId;
 
 }

@@ -22,9 +22,9 @@ public class AccountController {
         List<AccountResponseDto> allAcounts = accountService.getAllAcounts();
         return ResponseEntity.ok(allAcounts);
     }
-   @GetMapping("/{accountId}")
 
-    public ResponseEntity<?>  getAccountById(@PathVariable Long accountId) {
+   @GetMapping("/{accountId}")
+    public ResponseEntity<?>  getAccountById(@PathVariable String accountId) {
        AccountResponseDto accountById = accountService.getAccountById(accountId);
        return ResponseEntity.ok(accountById);
    }

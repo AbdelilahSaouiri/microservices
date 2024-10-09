@@ -35,15 +35,15 @@ public class AccountService {
         return accountResponseDtos;
     }
 
-    public AccountResponseDto getAccountById(Long accountId) {
-        Optional<BankAccount> bankAccount = accountRepository.findById(accountId);
-        return bankAccount.map(account -> AccountResponseDto.builder()
-                .accountId(account.getAccountId())
-                .accountType(account.getAccountType())
-                .balance(account.getBalance())
-                .currency(account.getCurrency())
-                .customerId(account.getCutsomerId())
-                .createdAt(account.getCreatedAt())
-                .build()).orElse(null);
+    public AccountResponseDto getAccountById(String accountId) {
+        BankAccount bankAccount = accountRepository.findByAccountId(accountId);
+        return AccountResponseDto.builder()
+                .accountId(bankAccount.getAccountId())
+                .accountType(bankAccount.getAccountType())
+                .balance(bankAccount.getBalance())
+                .currency(bankAccount.getCurrency())
+                .customerId(bankAccount.getCutsomerId())
+                .createdAt(bankAccount.getCreatedAt())
+                .build();
     }
 }

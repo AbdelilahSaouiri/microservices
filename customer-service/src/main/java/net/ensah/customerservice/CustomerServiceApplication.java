@@ -20,19 +20,19 @@ public class CustomerServiceApplication {
     CommandLineRunner commandLineRunner(CustomerRepository customerRepository) {
         return args -> {
             Customer customer1= Customer.builder()
-                    .customerId("1d202257-1ea6-4cb2-9da5-1d503239134b")
+                    .customerId(UUID.randomUUID().toString())
                     .firstName("abdelilah")
                     .lastName("saouiri")
                     .email("abdelilah@gmail.com")
                     .build();
             Customer customer2= Customer.builder()
-                    .customerId("1667d202257-1ea6-4cb2-9da5-1d503239134b")
+                    .customerId(UUID.randomUUID().toString())
                     .firstName("said")
                     .lastName("wahbi")
                     .email("said@gmail.com")
                     .build();
             Customer customer3= Customer.builder()
-                    .customerId("1234")
+                    .customerId(UUID.randomUUID().toString())
                     .firstName("fes")
                     .lastName("halima")
                     .email("halima@gmail.com")

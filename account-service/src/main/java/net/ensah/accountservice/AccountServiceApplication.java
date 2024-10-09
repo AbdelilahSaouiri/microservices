@@ -1,6 +1,7 @@
 package net.ensah.accountservice;
 
 import net.ensah.accountservice.Enum.AccountType;
+import net.ensah.accountservice.client.CustomerRestClient;
 import net.ensah.accountservice.entity.BankAccount;
 import net.ensah.accountservice.repository.AccountRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -21,36 +22,18 @@ public class AccountServiceApplication {
 	}
 
 	@Bean
-	CommandLineRunner commandLineRunner(AccountRepository accountRepository) {
-		return args -> {
-			BankAccount bankAccount1 =BankAccount.builder()
-					.accountId(UUID.randomUUID().toString())
-					.accountType(AccountType.CURRENT_ACCOUNT)
-					.balance(15009.67)
-					.createdAt(LocalDate.now())
-					.currency("MAD")
-					.cutsomerId("1d202257-1ea6-4cb2-9da5-1d503239134b")
-					.build();
-			BankAccount bankAccount2 =BankAccount.builder()
-					.accountId(UUID.randomUUID().toString())
-					.accountType(AccountType.SAVING_ACCOUNT)
-					.balance(1509)
-					.createdAt(LocalDate.now())
-					.currency("MAD")
-					.cutsomerId("1234")
-					.build();
-			BankAccount bankAccount3 =BankAccount.builder()
-					.accountId(UUID.randomUUID().toString())
-					.accountType(AccountType.CURRENT_ACCOUNT)
-					.balance(15009.67)
-					.createdAt(LocalDate.now())
-					.currency("USD")
-					.cutsomerId(UUID.randomUUID().toString())
-					.build();
-			accountRepository.save(bankAccount1);
-			accountRepository.save(bankAccount2);
-			accountRepository.save(bankAccount3);
-		};
+	CommandLineRunner commandLineRunner(AccountRepository accountRepository, CustomerRestClient customerRestClient) {
+		return args -> customerRestClient.getCustomers().forEach(c->{
+            BankAccount bankAccount1 =BankAccount.builder()
+                    .accountId(UUID.randomUUID().toString())
+                    .accountType(AccountType.CURRENT_ACCOUNT)
+                    .balance(15009.67)
+                    .createdAt(LocalDate.now())
+                    .currency("MAD")
+                    .cutsomerId(c.getCustomerId())
+                    .build();
+             accountRepository.save(bankAccount1);
+        });
 	}
 
 }

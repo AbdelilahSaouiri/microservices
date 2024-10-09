@@ -33,6 +33,7 @@ public class AccountService {
                     .currency(bankAccount.getCurrency())
                     .customerId(bankAccount.getCutsomerId())
                     .createdAt(bankAccount.getCreatedAt())
+                    .customer(customerRestClient.getCustomerByCustomerId(bankAccount.getCutsomerId()))
                     .build();
             accountResponseDtos.add(accountResponseDto);
         }

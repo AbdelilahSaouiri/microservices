@@ -1,5 +1,6 @@
 package net.ensah.accountservice.controller;
 
+import net.ensah.accountservice.client.CustomerRestClient;
 import net.ensah.accountservice.dto.Response.AccountResponseDto;
 import net.ensah.accountservice.service.AccountService;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +14,10 @@ public class AccountController {
 
     private final AccountService accountService;
 
+
     public AccountController(AccountService accountService) {
         this.accountService = accountService;
+
     }
 
     @GetMapping

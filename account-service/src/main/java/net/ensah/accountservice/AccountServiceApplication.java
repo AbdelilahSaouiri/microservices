@@ -6,11 +6,13 @@ import net.ensah.accountservice.repository.AccountRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
+@EnableFeignClients
 @SpringBootApplication
 public class AccountServiceApplication {
 
@@ -27,7 +29,7 @@ public class AccountServiceApplication {
 					.balance(15009.67)
 					.createdAt(LocalDate.now())
 					.currency("MAD")
-					.cutsomerId(UUID.randomUUID().toString())
+					.cutsomerId("1d202257-1ea6-4cb2-9da5-1d503239134b")
 					.build();
 			BankAccount bankAccount2 =BankAccount.builder()
 					.accountId(UUID.randomUUID().toString())
@@ -35,7 +37,7 @@ public class AccountServiceApplication {
 					.balance(1509)
 					.createdAt(LocalDate.now())
 					.currency("MAD")
-					.cutsomerId(UUID.randomUUID().toString())
+					.cutsomerId("1234")
 					.build();
 			BankAccount bankAccount3 =BankAccount.builder()
 					.accountId(UUID.randomUUID().toString())

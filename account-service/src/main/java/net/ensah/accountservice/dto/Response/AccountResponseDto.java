@@ -2,10 +2,13 @@ package net.ensah.accountservice.dto.Response;
 
 import lombok.Builder;
 import net.ensah.accountservice.Enum.AccountType;
+import net.ensah.accountservice.model.Customer;
+import net.ensah.customerservice.dto.response.CustomerResponseDto;
 
 import java.time.LocalDate;
 @Builder
 public record AccountResponseDto (
         String accountId, double balance, LocalDate createdAt,
-        String currency, AccountType accountType,String customerId){
+        String currency, AccountType accountType, String customerId,
+        Customer customer) {
 }

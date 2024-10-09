@@ -7,7 +7,7 @@ import lombok.Setter;
 
 public class Customer {
     private String customerId;
-    private String firstName;
+    private String firstname;
     private String lastName;
     private String email;
 }

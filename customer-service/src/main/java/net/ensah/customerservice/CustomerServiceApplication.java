@@ -1,14 +1,17 @@
 package net.ensah.customerservice;
 
+import net.ensah.customerservice.config.GlobalConfig;
 import net.ensah.customerservice.entity.Customer;
 import net.ensah.customerservice.repository.CustomerRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
 import java.util.UUID;
 
+@EnableConfigurationProperties(GlobalConfig.class)
 @SpringBootApplication
 public class CustomerServiceApplication {
 

@@ -3,7 +3,6 @@ package net.ensah.accountservice.dto.Response;
 import lombok.Builder;
 import net.ensah.accountservice.Enum.AccountType;
 import net.ensah.accountservice.model.Customer;
-import net.ensah.customerservice.dto.response.CustomerResponseDto;
 
 import java.time.LocalDate;
 @Builder
